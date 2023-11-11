@@ -1,0 +1,44 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+
+// Simulated GPS data structure
+struct GPSData {
+    double latitude;
+    double longitude;
+};
+
+class GPSSensor {
+public:
+    // Constructor
+    GPSSensor() {
+        // Initialize simulated GPS data
+        currentLocation.latitude = 37.7749;  // San Francisco, CA
+        currentLocation.longitude = -122.4194;
+    }
+
+    // Simulate reading GPS data
+    GPSData readGPSData() {
+        // Simulate a small change in latitude and longitude
+        currentLocation.latitude += 0.0001;
+        currentLocation.longitude += 0.0002;
+
+        return currentLocation;
+    }
+
+private:
+    GPSData currentLocation;
+};
+
+int main() {
+    GPSSensor gpsSensor;
+
+    // Simulate reading GPS data
+    GPSData currentLocation = gpsSensor.readGPSData();
+
+    // Print the GPS coordinates
+    std::cout << std::fixed << std::setprecision(6);
+    std::cout << "Current Location - Latitude: " << currentLocation.latitude << ", Longitude: " << currentLocation.longitude << std::endl;
+
+    return 0;
+}
